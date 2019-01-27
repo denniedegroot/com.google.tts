@@ -1,0 +1,84 @@
+{
+    "id": "com.google.tts",
+    "name": {
+        "en": "Google TTS"
+    },
+    "version": "1.0.0",
+    "compatibility": "",
+    "sdk": 2,
+    "author": {
+        "name": "Dennie de Groot",
+        "email": "mail@denniedegroot.nl",
+        "website": "https://denniedegroot.nl"
+    },
+    "contributors": {
+        "developers": [{
+            "name": "Dennie de Groot",
+            "email": "mail@denniedegroot.nl",
+            "website": "https://denniedegroot.nl"
+        }]
+    },
+    "contributing": {
+        "donate": {
+            "paypal": {
+                "username": "denniedegroot"
+            }
+        }
+    },
+    "description": {
+        "en": "Google TTS support for Homey",
+        "nl": "Google TTS ondersteuning voor Homey"
+    },
+    "images": {
+        "large": "./assets/images/large.jpg",
+        "small": "./assets/images/small.jpg"
+    },
+    "category": "appliances",
+    "flow": {
+        "actions": [
+            {
+                "id": "tts",
+                "title": {
+                    "en": "Say something",
+                    "nl": "Zeg iets"
+                },
+                "args": [
+                    {
+                        "name": "device",
+                        "type": "autocomplete",
+                        "placeholder": {
+                            "en": "Device",
+                            "nl": "Apparaat"
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "en",
+                                "label": {
+                                    "en": "English"
+                                }
+                            },
+                            {
+                                "id": "nl",
+                                "label": {
+                                    "en": "Nederlands"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "text",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Text",
+                            "nl": "Tekst"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
