@@ -5,13 +5,6 @@ const Homey = require('homey');
 const mdns = require('mdns-js');
 const googleTTS = require('google-home-audio-tts');
 
-const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
-
-async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++)
-        await callback(array[index], index, array);
-}
-
 class App extends Homey.App {
 
     log() {
@@ -25,9 +18,12 @@ class App extends Homey.App {
     onInit() {
         console.log(`${Homey.manifest.id} running...`);
 
-        let foundServers = [{name: 'Broadcast', description: 'Broadcast to all devices'}];
-        let browser = mdns.createBrowser(mdns.tcp('_googlecast'));
+        let foundServers = [];
+        let browser = mdns.createBrowser(mdns.tcp('googlecast'));
         let device = new googleTTS('0.0.0.0');
+        let ttsAction = new Homey.FlowCardAction('tts');
+
+        foundServers['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
 
         browser.on('ready', function onReady() {
             browser.discover();
@@ -52,39 +48,42 @@ class App extends Homey.App {
                 }
 
                 if (data.type[0].name == 'googlecast')
-                    foundServers.push(db);
+                    foundServers[db.name] = db;
             }
         });
 
-        let ttsAction = new Homey.FlowCardAction('tts');
-        ttsAction.register().registerRunListener(( args, state ) => {
+        ttsAction.register().registerRunListener((args, state) => {
             return new Promise((resolve, reject) => {
                 device.setLanguage(args.language);
 
                 if (args.device.name == 'Broadcast') {
-                    asyncForEach(foundServers, async (device_data) => {
-                        if (device_data.name == 'Broadcast')
-                            return;
+                    device.getTtsUrl(args.text).then((url) => {
+                        for (let device_data in foundServers) {
+                            if (foundServers[device_data].name == 'Broadcast')
+                                continue;
 
-                        device.setIp(device_data.host);
-
-                        device.tts(args.text, result => {
-                            resolve();
-                        });
-
-                        await waitFor(1000);
+                            device.setIp(foundServers[device_data].host);
+                            device.audio(url, (result) => {
+                                resolve();
+                            });
+                        }
                     });
                 } else {
                     device.setIp(args.device.host);
 
-                    device.tts(args.text, result => {
+                    device.tts(args.text, (result) => {
                         resolve();
                     });
                 }
             });
+        }).getArgument('device').registerAutocompleteListener((query, args) => {
+            let foundDevices = []
 
-        }).getArgument('device').registerAutocompleteListener(( query, args ) => {
-            return Promise.resolve(foundServers);
+            for (let device_data in foundServers) {
+                foundDevices.push(foundServers[device_data]);
+            }
+
+            return Promise.resolve(foundDevices);
         });
     }
 
