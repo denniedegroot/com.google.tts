@@ -39,11 +39,11 @@ class App extends Homey.App {
                 db.host = data.addresses[0];
 
                 for (let key in data.txt) {
-                    if (data.txt[key].indexOf('md=') > -1) {
-                        db.name = data.txt[key].replace('md=', '');
-                    }
                     if (data.txt[key].indexOf('fn=') > -1) {
-                        db.description = data.txt[key].replace('fn=', '');
+                        db.name = data.txt[key].replace('fn=', '');
+                    }
+                    if (data.txt[key].indexOf('md=') > -1) {
+                        db.description = data.txt[key].replace('md=', '');
                     }
                 }
 
