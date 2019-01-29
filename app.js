@@ -33,7 +33,8 @@ class App extends Homey.App {
             if (typeof(data) == 'object' &&
                  data.hasOwnProperty('type') &&
                  data.hasOwnProperty('addresses') &&
-                 data.hasOwnProperty('txt')) {
+                 data.hasOwnProperty('txt') &&
+                 data.hasOwnProperty('fullname')) {
 
                 let db = {};
                 db.host = data.addresses[0];
@@ -47,7 +48,7 @@ class App extends Homey.App {
                 }
 
                 if (data.type[0].name == 'googlecast')
-                    foundServers[db.name] = db;
+                    foundServers[data.fullname] = db;
             }
         });
 
@@ -55,6 +56,7 @@ class App extends Homey.App {
             return new Promise((resolve, reject) => {
                 device.setTtsSpeed(1)
                 device.setLanguage(args.language);
+                device.setTtsTimeout(5000);
 
                 if (args.speed == 'slow')
                     device.setTtsSpeed(0.24)
