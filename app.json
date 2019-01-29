@@ -47,8 +47,8 @@
                         "name": "device",
                         "type": "autocomplete",
                         "placeholder": {
-                            "en": "Device",
-                            "nl": "Apparaat"
+                            "en": "Choose a device",
+                            "nl": "Kies een apparaat"
                         }
                     },
                     {

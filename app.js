@@ -43,7 +43,7 @@ class App extends Homey.App {
                         db.name = data.txt[key].replace('md=', '');
                     }
                     if (data.txt[key].indexOf('fn=') > -1) {
-                        db.description = data.txt[key].replace('fn=', '') + ' (' + data.addresses[0] + ')';
+                        db.description = data.txt[key].replace('fn=', '');
                     }
                 }
 
@@ -79,9 +79,9 @@ class App extends Homey.App {
         }).getArgument('device').registerAutocompleteListener((query, args) => {
             let foundDevices = []
 
-            for (let device_data in foundServers) {
-                foundDevices.push(foundServers[device_data]);
-            }
+            for (let device_data in foundServers)
+                if (foundServers[device_data].name.toLowerCase().indexOf(query.toLowerCase()) > -1)
+                    foundDevices.push(foundServers[device_data]);
 
             return Promise.resolve(foundDevices);
         });
