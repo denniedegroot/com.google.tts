@@ -58,13 +58,35 @@
                             {
                                 "id": "en",
                                 "label": {
-                                    "en": "English"
+                                    "en": "English",
+                                    "nl": "Engels"
                                 }
                             },
                             {
                                 "id": "nl",
                                 "label": {
-                                    "en": "Nederlands"
+                                    "en": "Dutch",
+                                    "nl": "Nederlands"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "speed",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "normal",
+                                "label": {
+                                    "en": "Normal speech speed",
+                                    "nl": "Normale spraak snelheid"
+                                }
+                            },
+                            {
+                                "id": "slow",
+                                "label": {
+                                    "en": "Slow speech speed",
+                                    "nl": "Langzame spraak snelheid"
                                 }
                             }
                         ]

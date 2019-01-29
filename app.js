@@ -53,7 +53,11 @@ class App extends Homey.App {
 
         ttsAction.register().registerRunListener((args, state) => {
             return new Promise((resolve, reject) => {
+                device.setTtsSpeed(1)
                 device.setLanguage(args.language);
+
+                if (args.speed == 'slow')
+                    device.setTtsSpeed(0.24)
 
                 if (args.device.name == 'Broadcast') {
                     device.getTtsUrl(args.text).then((url) => {
