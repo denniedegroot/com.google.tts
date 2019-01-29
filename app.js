@@ -85,7 +85,7 @@ class App extends Homey.App {
             let foundDevices = []
 
             for (let device_data in foundServers)
-                if (foundServers[device_data].name.toLowerCase().indexOf(query.toLowerCase()) > -1)
+                if (foundServers[device_data].name.toLowerCase().indexOf(query.toLowerCase()) > -1 || foundServers[device_data].description.toLowerCase().indexOf(query.toLowerCase()) > -1)
                     foundDevices.push(foundServers[device_data]);
 
             return Promise.resolve(foundDevices);
