@@ -13,6 +13,11 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
+## Changelog 1.1.0:
+- Added speech speed selection, bugfixes
+
+---
+
 ## Changelog 1.0.0:
 - Initial release
 
