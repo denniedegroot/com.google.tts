@@ -20,7 +20,6 @@ class App extends Homey.App {
 
         let foundServers = [];
         let browser = mdns.createBrowser(mdns.tcp('googlecast'));
-        let device = new googleTTS('0.0.0.0');
         let ttsAction = new Homey.FlowCardAction('tts');
 
         foundServers['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
@@ -54,8 +53,8 @@ class App extends Homey.App {
 
         ttsAction.register().registerRunListener((args, state) => {
             return new Promise((resolve, reject) => {
-                device.setTtsSpeed(1)
-                device.setLanguage(args.language);
+                let device = new googleTTS(args.device.host, args.language);
+
                 device.setTtsTimeout(5000);
 
                 if (args.speed == 'slow')
@@ -74,8 +73,6 @@ class App extends Homey.App {
                         }
                     });
                 } else {
-                    device.setIp(args.device.host);
-
                     device.tts(args.text, (result) => {
                         resolve();
                     });
