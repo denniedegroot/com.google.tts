@@ -33,7 +33,7 @@
         "large": "./assets/images/large.jpg",
         "small": "./assets/images/small.jpg"
     },
-    "category": "appliances",
+    "category": "tools",
     "flow": {
         "actions": [
             {
