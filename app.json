@@ -3,7 +3,7 @@
     "name": {
         "en": "Google TTS"
     },
-    "version": "1.1.1",
+    "version": "1.1.2",
     "compatibility": "",
     "sdk": 2,
     "author": {
@@ -27,7 +27,8 @@
     },
     "description": {
         "en": "Google TTS support for Homey",
-        "nl": "Google TTS ondersteuning voor Homey"
+        "nl": "Google TTS ondersteuning voor Homey",
+		"de": "Google TTS Unterstützung für Homey"
     },
     "images": {
         "large": "./assets/images/large.jpg",
@@ -40,7 +41,9 @@
                 "id": "tts",
                 "title": {
                     "en": "Say something",
-                    "nl": "Zeg iets"
+                    "nl": "Zeg iets",
+					"de": "Sprich etwas"
+					
                 },
                 "args": [
                     {
@@ -48,7 +51,8 @@
                         "type": "autocomplete",
                         "placeholder": {
                             "en": "Choose a device",
-                            "nl": "Kies een apparaat"
+                            "nl": "Kies een apparaat",
+							"de": "Wähle ein Gerät"
                         }
                     },
                     {
@@ -59,14 +63,24 @@
                                 "id": "en",
                                 "label": {
                                     "en": "English",
-                                    "nl": "Engels"
+                                    "nl": "Engels",
+									"de": "Englisch"
                                 }
                             },
                             {
                                 "id": "nl",
                                 "label": {
                                     "en": "Dutch",
-                                    "nl": "Nederlands"
+                                    "nl": "Nederlands",
+									"de": "Niederländisch"
+                                }
+                            },
+                            {
+                                "id": "de",
+                                "label": {
+                                    "en": "German",
+                                    "nl": "Duitser",
+									"de": "Deutsch"
                                 }
                             }
                         ]
@@ -79,14 +93,16 @@
                                 "id": "normal",
                                 "label": {
                                     "en": "Normal speech speed",
-                                    "nl": "Normale spraak snelheid"
+                                    "nl": "Normale spraak snelheid",
+                                    "de": "Normales Sprechtempo"
                                 }
                             },
                             {
                                 "id": "slow",
                                 "label": {
                                     "en": "Slow speech speed",
-                                    "nl": "Langzame spraak snelheid"
+                                    "nl": "Langzame spraak snelheid",
+									"de": "Langsames Sprechtempo"
                                 }
                             }
                         ]
@@ -96,7 +112,8 @@
                         "type": "text",
                         "placeholder": {
                             "en": "Text",
-                            "nl": "Tekst"
+                            "nl": "Tekst",
+							"de": "Text"
                         }
                     }
                 ]
