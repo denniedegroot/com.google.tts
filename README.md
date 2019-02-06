@@ -13,11 +13,6 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
-## Changelog 1.1.2:
-- Added German speech and language support
-
----
-
 ## Changelog 1.1.0:
 - Added speech speed selection, bugfixes
 
