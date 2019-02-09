@@ -19,7 +19,7 @@ class App extends Homey.App {
         console.log(`${Homey.manifest.id} running...`);
 
         let FoundDevices = [];
-        let browser = mdns.createBrowser(mdns.tcp('googlecast'));
+        let browser = mdns.createBrowser('_googlecast._tcp');
         let ttsAction = new Homey.FlowCardAction('tts');
 
         FoundDevices['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
@@ -49,6 +49,10 @@ class App extends Homey.App {
                 if (data.type[0].name == 'googlecast')
                     FoundDevices[data.fullname] = db;
             }
+        });
+
+        browser.on('error', function onError(error) {
+            this.error(error);
         });
 
         ttsAction.register().registerRunListener((args, state) => {
