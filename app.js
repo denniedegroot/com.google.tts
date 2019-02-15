@@ -24,11 +24,11 @@ class App extends Homey.App {
 
         FoundDevices['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
 
-        browser.on('ready', function onReady() {
+        browser.on('ready', () => {
             browser.discover();
         });
 
-        browser.on('update', function onUpdate(data) {
+        browser.on('update', (data) => {
             if (typeof(data) == 'object' &&
                  data.hasOwnProperty('type') &&
                  data.hasOwnProperty('addresses') &&
@@ -51,7 +51,7 @@ class App extends Homey.App {
             }
         });
 
-        browser.on('error', function onError(error) {
+        browser.on('error', (error) => {
             this.error(error);
         });
 
@@ -63,6 +63,9 @@ class App extends Homey.App {
 
                 if (args.speed == 'slow')
                     device.setTtsSpeed(0.24)
+
+                if (args.volume > 0.0 && args.volume <= 1.0)
+                    device.setVolume(args.volume)
 
                 if (args.device.name == 'Broadcast') {
                     device.getTtsUrl(args.text).then((url) => {
