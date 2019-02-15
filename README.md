@@ -13,6 +13,15 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
+## Changelog 1.3.0:
+- Added volume change
+- Improved mdns-js error handling 
+
+Due to the new volume setting the flow cards are broken and need to be re-saved.
+A setting of 0% volume means no volume change.
+
+---
+
 ## Changelog 1.2.0:
 - Added new languages
 
