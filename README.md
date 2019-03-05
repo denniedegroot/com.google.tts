@@ -13,6 +13,11 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
+## Changelog 1.3.1:
+- Handle error in tts library
+
+---
+
 ## Changelog 1.3.0:
 - Added volume change
 - Improved mdns-js error handling 
