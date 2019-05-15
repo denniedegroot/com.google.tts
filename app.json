@@ -163,6 +163,14 @@
                                 }
                             },
                             {
+                                "id": "nb",
+                                "label": {
+                                    "en": "Norwegian",
+                                    "nl": "Noors",
+                                    "de": "Norwegisch"
+                                }
+                            },
+                            {
                                 "id": "tr",
                                 "label": {
                                     "en": "Turkish",
