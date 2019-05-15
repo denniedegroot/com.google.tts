@@ -13,6 +13,11 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
+## Changelog 1.3.2:
+- Added Norwegian
+
+---
+
 ## Changelog 1.3.1:
 - Handle error in tts library
 
