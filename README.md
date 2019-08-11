@@ -13,6 +13,12 @@ Broadcast a text message to your Google Home devices.
 
 ---
 
+## Changelog 1.4.0:
+- Implemented discovery strategy
+- Added English US and English AU
+
+---
+
 ## Changelog 1.3.2:
 - Added Norwegian
 
