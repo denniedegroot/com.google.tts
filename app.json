@@ -35,6 +35,16 @@
         "small": "./assets/images/small.jpg"
     },
     "category": "tools",
+    "discovery": {
+        "googlecast": {
+            "type": "mdns-sd",
+            "mdns-sd": {
+                "name": "googlecast",
+                "protocol": "tcp"
+            },
+            "id": "{{txt.id}}"
+        }
+    },     
     "flow": {
         "actions": [
             {

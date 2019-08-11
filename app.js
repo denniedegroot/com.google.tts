@@ -1,8 +1,6 @@
 'use strict';
 
 const Homey = require('homey');
-
-const mdns = require('mdns-js');
 const googleTTS = require('google-home-audio-tts');
 
 class App extends Homey.App {
@@ -19,41 +17,22 @@ class App extends Homey.App {
         console.log(`${Homey.manifest.id} running...`);
 
         let FoundDevices = [];
-        let browser = mdns.createBrowser('_googlecast._tcp');
         let ttsAction = new Homey.FlowCardAction('tts');
 
         FoundDevices['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
 
-        browser.on('ready', () => {
-            browser.discover();
+        const discoveryStrategy = Homey.ManagerDiscovery.getDiscoveryStrategy('googlecast');
+        discoveryStrategy.on('result', discoveryResult => {
+            let db = {};
+            db.id = discoveryResult.id;
+            db.host = discoveryResult.address;
+            db.name = discoveryResult.txt.fn;
+            db.description = discoveryResult.txt.md;
+
+            FoundDevices[discoveryResult.id] = db;
         });
 
-        browser.on('update', (data) => {
-            if (typeof(data) == 'object' &&
-                 data.hasOwnProperty('type') &&
-                 data.hasOwnProperty('addresses') &&
-                 data.hasOwnProperty('txt') &&
-                 data.hasOwnProperty('fullname')) {
-
-                let db = {};
-                db.host = data.addresses[0];
-
-                for (let key in data.txt) {
-                    if (data.txt[key].indexOf('fn=') > -1)
-                        db.name = data.txt[key].replace('fn=', '');
-
-                    if (data.txt[key].indexOf('md=') > -1)
-                        db.description = data.txt[key].replace('md=', '');
-                }
-
-                if (data.type[0].name == 'googlecast')
-                    FoundDevices[data.fullname] = db;
-            }
-        });
-
-        browser.on('error', (error) => {
-            this.error(error);
-        });
+        discoveryStrategy.getDiscoveryResults();
 
         ttsAction.register().registerRunListener((args, state) => {
             return new Promise((resolve, reject) => {
@@ -80,7 +59,12 @@ class App extends Homey.App {
                         }
                     });
                 } else {
-                    device.setIp(this.findDeviceIP(FoundDevices, args.device));
+                    let ip = this.findDeviceIP(FoundDevices, args.device);
+
+                    if (ip == undefined || ip == "0.0.0.0")
+                        return reject();
+
+                    device.setIp(ip);
                     device.tts(args.text, (result) => {
                         resolve();
                     });
@@ -99,7 +83,7 @@ class App extends Homey.App {
 
     findDeviceIP(FoundDevices, device) {
         for (let device_data in FoundDevices)
-            if (FoundDevices[device_data].name == device.name)
+            if (FoundDevices[device_data].name == device.name || (FoundDevices[device_data].id != undefined && FoundDevices[device_data].id == device.id))
                 return FoundDevices[device_data].host;
 
         return "0.0.0.0";
