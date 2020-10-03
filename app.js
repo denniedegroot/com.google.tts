@@ -53,8 +53,8 @@ class App extends Homey.App {
                 if (args.speed == 'slow')
                     device.setTtsSpeed(0.24)
 
-                if (args.volume > 0.0 && args.volume <= 1.0)
-                    device.setVolume(args.volume)
+                if (args.volume > 0.0 && args.volume <= 100.0)
+                    device.setVolume(args.volume / 100.0)
 
                 if (args.device.name == 'Broadcast') {
                     device.getTtsUrl(args.text).then((url) => {
