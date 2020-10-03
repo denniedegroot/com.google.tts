@@ -22,7 +22,9 @@ class App extends Homey.App {
         FoundDevices['Broadcast'] = {name: 'Broadcast', description: 'Broadcast to all devices'};
 
         const discoveryStrategy = Homey.ManagerDiscovery.getDiscoveryStrategy('googlecast');
-        discoveryStrategy.on('result', discoveryResult => {
+        const initialResults = discoveryStrategy.getDiscoveryResults();
+
+        Object.entries(initialResults).forEach(([key, discoveryResult]) => {
             let db = {};
             db.id = discoveryResult.id;
             db.host = discoveryResult.address;
@@ -32,7 +34,15 @@ class App extends Homey.App {
             FoundDevices[discoveryResult.id] = db;
         });
 
-        discoveryStrategy.getDiscoveryResults();
+        discoveryStrategy.on('result', discoveryResult => {
+            let db = {};
+            db.id = discoveryResult.id;
+            db.host = discoveryResult.address;
+            db.name = discoveryResult.txt.fn;
+            db.description = discoveryResult.txt.md;
+
+            FoundDevices[discoveryResult.id] = db;
+        });
 
         ttsAction.register().registerRunListener((args, state) => {
             return new Promise((resolve, reject) => {
