@@ -1,294 +1,296 @@
 {
-    "id": "com.google.tts",
-    "name": {
-        "en": "Google TTS"
-    },
-    "version": "1.4.0",
-    "compatibility": ">=2.5.0",
-    "sdk": 2,
-    "author": {
+  "id": "com.google.tts",
+  "name": {
+    "en": "Google TTS"
+  },
+  "version": "1.4.2",
+  "compatibility": ">=2.5.0",
+  "sdk": 2,
+  "author": {
+    "name": "Dennie de Groot",
+    "email": "mail@denniedegroot.nl",
+    "website": "https://denniedegroot.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
         "name": "Dennie de Groot",
         "email": "mail@denniedegroot.nl",
         "website": "https://denniedegroot.nl"
-    },
-    "contributors": {
-        "developers": [{
-            "name": "Dennie de Groot",
-            "email": "mail@denniedegroot.nl",
-            "website": "https://denniedegroot.nl"
-        }]
-    },
-    "contributing": {
-        "donate": {
-            "paypal": {
-                "username": "denniedegroot"
-            }
-        }
-    },
-    "description": {
-        "en": "Google TTS support for Homey",
-        "nl": "Google TTS ondersteuning voor Homey",
-        "de": "Google TTS Unterstützung für Homey"
-    },
-    "images": {
-        "large": "./assets/images/large.jpg",
-        "small": "./assets/images/small.jpg"
-    },
-    "category": "tools",
-    "discovery": {
-        "googlecast": {
-            "type": "mdns-sd",
-            "mdns-sd": {
-                "name": "googlecast",
-                "protocol": "tcp"
-            },
-            "id": "{{txt.id}}"
-        }
-    },     
-    "flow": {
-        "actions": [
-            {
-                "id": "tts",
-                "title": {
-                    "en": "Say something",
-                    "nl": "Zeg iets",
-                    "de": "Sprich etwas"
-                },
-                "args": [
-                    {
-                        "name": "device",
-                        "type": "autocomplete",
-                        "placeholder": {
-                            "en": "Choose a device",
-                            "nl": "Kies een apparaat",
-                            "de": "Wähle ein Gerät"
-                        }
-                    },
-                    {
-                        "name": "language",
-                        "type": "dropdown",
-                        "values": [
-                            {
-                                "id": "nl",
-                                "label": {
-                                    "en": "Dutch",
-                                    "nl": "Nederlands",
-                                    "de": "Niederländisch"
-                                }
-                            },
-                            {
-                                "id": "en",
-                                "label": {
-                                    "en": "English",
-                                    "nl": "Engels",
-                                    "de": "Englisch"
-                                }
-                            },
-                            {
-                                "id": "en-US",
-                                "label": {
-                                    "en": "English US",
-                                    "nl": "Engels US",
-                                    "de": "Englisch US"
-                                }
-                            },
-                            {
-                                "id": "en-AU",
-                                "label": {
-                                    "en": "English AU",
-                                    "nl": "Engels AU",
-                                    "de": "Englisch AU"
-                                }
-                            },
-                            {
-                                "id": "de",
-                                "label": {
-                                    "en": "German",
-                                    "nl": "Duits",
-                                    "de": "Deutsch"
-                                }
-                            },
-                            {
-                                "id": "cs",
-                                "label": {
-                                    "en": "Czech",
-                                    "nl": "Tsjechisch",
-                                    "de": "Tschechisch"
-                                }
-                            },
-                            {
-                                "id": "da",
-                                "label": {
-                                    "en": "Danish",
-                                    "nl": "Deens",
-                                    "de": "Dänisch"
-                                }
-                            },
-                            {
-                                "id": "es",
-                                "label": {
-                                    "en": "Spanish",
-                                    "nl": "Spaans",
-                                    "de": "Spanisch"
-                                }
-                            },
-                            {
-                                "id": "fr",
-                                "label": {
-                                    "en": "French",
-                                    "nl": "Frans",
-                                    "de": "Französisch"
-                                }
-                            },
-                            {
-                                "id": "it",
-                                "label": {
-                                    "en": "Italian",
-                                    "nl": "Italiaans",
-                                    "de": "Italienisch"
-                                }
-                            },
-                            {
-                                "id": "hu",
-                                "label": {
-                                    "en": "Hungarian",
-                                    "nl": "Hongaars",
-                                    "de": "Ungarisch"
-                                }
-                            },
-                            {
-                                "id": "pl",
-                                "label": {
-                                    "en": "Polish",
-                                    "nl": "Pools",
-                                    "de": "Polieren"
-                                }
-                            },
-                            {
-                                "id": "pt",
-                                "label": {
-                                    "en": "Portuguese",
-                                    "nl": "Portugees",
-                                    "de": "Portugiesisch"
-                                }
-                            },
-                            {
-                                "id": "fi",
-                                "label": {
-                                    "en": "Finnish",
-                                    "nl": "Fins",
-                                    "de": "Finnisch"
-                                }
-                            },
-                            {
-                                "id": "sv",
-                                "label": {
-                                    "en": "Swedish",
-                                    "nl": "Zweeds",
-                                    "de": "Schwedisch"
-                                }
-                            },
-                            {
-                                "id": "nb",
-                                "label": {
-                                    "en": "Norwegian",
-                                    "nl": "Noors",
-                                    "de": "Norwegisch"
-                                }
-                            },
-                            {
-                                "id": "tr",
-                                "label": {
-                                    "en": "Turkish",
-                                    "nl": "Turks",
-                                    "de": "Türkisch"
-                                }
-                            },
-                            {
-                                "id": "el",
-                                "label": {
-                                    "en": "Greek",
-                                    "nl": "Grieks",
-                                    "de": "Griechisch"
-                                }
-                            },
-                            {
-                                "id": "ru",
-                                "label": {
-                                    "en": "Russian",
-                                    "nl": "Russisch",
-                                    "de": "Russisch"
-                                }
-                            },
-                            {
-                                "id": "zh",
-                                "label": {
-                                    "en": "Chinese",
-                                    "nl": "Chinees",
-                                    "de": "Chinesisch"
-                                }
-                            },
-                            {
-                                "id": "ja",
-                                "label": {
-                                    "en": "Japanese",
-                                    "nl": "Japans",
-                                    "de": "Japanisch"
-                                }
-                            },
-                            {
-                                "id": "id",
-                                "label": {
-                                    "en": "Indonesian",
-                                    "nl": "Indonesisch",
-                                    "de": "Indonesisch"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "name": "speed",
-                        "type": "dropdown",
-                        "values": [
-                            {
-                                "id": "normal",
-                                "label": {
-                                    "en": "Normal speech speed",
-                                    "nl": "Normale spraak snelheid",
-                                    "de": "Normales Sprechtempo"
-                                }
-                            },
-                            {
-                                "id": "slow",
-                                "label": {
-                                    "en": "Slow speech speed",
-                                    "nl": "Langzame spraak snelheid",
-                                    "de": "Langsames Sprechtempo"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "name": "volume",
-                        "type": "range",
-                        "min": 0,
-                        "max": 100,
-                        "step": 1,
-                        "label": "% Volume",
-                        "labelMultiplier": 1,
-                        "labelDecimals": 0
-                    },
-                    {
-                        "name": "text",
-                        "type": "text",
-                        "placeholder": {
-                            "en": "Text",
-                            "nl": "Tekst",
-                            "de": "Text"
-                        }
-                    }
-                ]
-            }
-        ]
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "denniedegroot"
+      }
     }
+  },
+  "description": {
+    "en": "Google TTS support for Homey",
+    "nl": "Google TTS ondersteuning voor Homey",
+    "de": "Google TTS Unterstützung für Homey"
+  },
+  "images": {
+    "large": "./assets/images/large.jpg",
+    "small": "./assets/images/small.jpg"
+  },
+  "category": "tools",
+  "discovery": {
+    "googlecast": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "name": "googlecast",
+        "protocol": "tcp"
+      },
+      "id": "{{txt.id}}"
+    }
+  },
+  "flow": {
+    "actions": [
+      {
+        "id": "tts",
+        "title": {
+          "en": "Say something",
+          "nl": "Zeg iets",
+          "de": "Sprich etwas"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "autocomplete",
+            "placeholder": {
+              "en": "Choose a device",
+              "nl": "Kies een apparaat",
+              "de": "Wähle ein Gerät"
+            }
+          },
+          {
+            "name": "language",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "nl",
+                "label": {
+                  "en": "Dutch",
+                  "nl": "Nederlands",
+                  "de": "Niederländisch"
+                }
+              },
+              {
+                "id": "en",
+                "label": {
+                  "en": "English",
+                  "nl": "Engels",
+                  "de": "Englisch"
+                }
+              },
+              {
+                "id": "en-US",
+                "label": {
+                  "en": "English US",
+                  "nl": "Engels US",
+                  "de": "Englisch US"
+                }
+              },
+              {
+                "id": "en-AU",
+                "label": {
+                  "en": "English AU",
+                  "nl": "Engels AU",
+                  "de": "Englisch AU"
+                }
+              },
+              {
+                "id": "de",
+                "label": {
+                  "en": "German",
+                  "nl": "Duits",
+                  "de": "Deutsch"
+                }
+              },
+              {
+                "id": "cs",
+                "label": {
+                  "en": "Czech",
+                  "nl": "Tsjechisch",
+                  "de": "Tschechisch"
+                }
+              },
+              {
+                "id": "da",
+                "label": {
+                  "en": "Danish",
+                  "nl": "Deens",
+                  "de": "Dänisch"
+                }
+              },
+              {
+                "id": "es",
+                "label": {
+                  "en": "Spanish",
+                  "nl": "Spaans",
+                  "de": "Spanisch"
+                }
+              },
+              {
+                "id": "fr",
+                "label": {
+                  "en": "French",
+                  "nl": "Frans",
+                  "de": "Französisch"
+                }
+              },
+              {
+                "id": "it",
+                "label": {
+                  "en": "Italian",
+                  "nl": "Italiaans",
+                  "de": "Italienisch"
+                }
+              },
+              {
+                "id": "hu",
+                "label": {
+                  "en": "Hungarian",
+                  "nl": "Hongaars",
+                  "de": "Ungarisch"
+                }
+              },
+              {
+                "id": "pl",
+                "label": {
+                  "en": "Polish",
+                  "nl": "Pools",
+                  "de": "Polieren"
+                }
+              },
+              {
+                "id": "pt",
+                "label": {
+                  "en": "Portuguese",
+                  "nl": "Portugees",
+                  "de": "Portugiesisch"
+                }
+              },
+              {
+                "id": "fi",
+                "label": {
+                  "en": "Finnish",
+                  "nl": "Fins",
+                  "de": "Finnisch"
+                }
+              },
+              {
+                "id": "sv",
+                "label": {
+                  "en": "Swedish",
+                  "nl": "Zweeds",
+                  "de": "Schwedisch"
+                }
+              },
+              {
+                "id": "nb",
+                "label": {
+                  "en": "Norwegian",
+                  "nl": "Noors",
+                  "de": "Norwegisch"
+                }
+              },
+              {
+                "id": "tr",
+                "label": {
+                  "en": "Turkish",
+                  "nl": "Turks",
+                  "de": "Türkisch"
+                }
+              },
+              {
+                "id": "el",
+                "label": {
+                  "en": "Greek",
+                  "nl": "Grieks",
+                  "de": "Griechisch"
+                }
+              },
+              {
+                "id": "ru",
+                "label": {
+                  "en": "Russian",
+                  "nl": "Russisch",
+                  "de": "Russisch"
+                }
+              },
+              {
+                "id": "zh",
+                "label": {
+                  "en": "Chinese",
+                  "nl": "Chinees",
+                  "de": "Chinesisch"
+                }
+              },
+              {
+                "id": "ja",
+                "label": {
+                  "en": "Japanese",
+                  "nl": "Japans",
+                  "de": "Japanisch"
+                }
+              },
+              {
+                "id": "id",
+                "label": {
+                  "en": "Indonesian",
+                  "nl": "Indonesisch",
+                  "de": "Indonesisch"
+                }
+              }
+            ]
+          },
+          {
+            "name": "speed",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "normal",
+                "label": {
+                  "en": "Normal speech speed",
+                  "nl": "Normale spraak snelheid",
+                  "de": "Normales Sprechtempo"
+                }
+              },
+              {
+                "id": "slow",
+                "label": {
+                  "en": "Slow speech speed",
+                  "nl": "Langzame spraak snelheid",
+                  "de": "Langsames Sprechtempo"
+                }
+              }
+            ]
+          },
+          {
+            "name": "volume",
+            "type": "range",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "label": "% Volume",
+            "labelMultiplier": 1,
+            "labelDecimals": 0
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "placeholder": {
+              "en": "Text",
+              "nl": "Tekst",
+              "de": "Text"
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
