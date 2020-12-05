@@ -29,7 +29,7 @@
   "1.4.2": {
     "en": "Fix setting volume with a tag"
   }
-   "1.4.3": {
-    "en": "Google TTS update"
+  "1.4.3": {
+    "en": "Google TTS API update"
   }
 }
