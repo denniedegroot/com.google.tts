@@ -56,6 +56,11 @@
           "nl": "Zeg iets",
           "de": "Sprich etwas"
         },
+        "titleFormatted": {
+          "en": "Say [[text]] @ [[speed]] on [[device]], [[volume]] in [[language]]",
+          "nl": "Zeg [[text]] @ [[speed]] op [[device]], [[volume]] in [[language]]",
+          "de": "Sagen Sie [[text]] @ [[speed]] auf [[device]], [[volume]] in [[language]]"
+        },
         "args": [
           {
             "name": "device",
