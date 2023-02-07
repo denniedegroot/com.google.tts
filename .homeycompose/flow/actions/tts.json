@@ -1,0 +1,262 @@
+{
+  "id": "tts",
+  "title": {
+    "en": "Say something",
+    "nl": "Zeg iets",
+    "de": "Sprich etwas"
+  },
+  "titleFormatted": {
+    "en": "Say [[text]] on [[device]] in [[language]] at volume [[volume]], slow [[speed]], to muted too [[muted]]",
+    "nl": "Zeg [[text]] op [[device]] in het [[language]] met volume [[volume]], langzaam [[speed]], ook naar gedempt [[muted]]",
+    "de": "Sprich [[text]] auf [[device]] ins [[language]] mit Lautstärke [[volume]], langsam [[speed]], auch nach stummgeschaltetes [[muted]]"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "autocomplete",
+      "title": {
+        "en": "Cast device",
+        "nl": "Cast apparaat",
+        "de": "Cast Gerät"
+      },
+      "placeholder": {
+        "en": "Choose a device",
+        "nl": "Kies een apparaat",
+        "de": "Wähle ein Gerät"
+      }
+    },
+    {
+      "name": "language",
+      "title": {
+        "en": "Language",
+        "nl": "Taal",
+        "de": "Sprache"
+      },
+      "type": "dropdown",
+      "values": [
+        {
+          "id": "nl",
+          "label": {
+            "en": "Dutch",
+            "nl": "Nederlands",
+            "de": "Niederländisch"
+          }
+        },
+        {
+          "id": "nl-BE",
+          "label": {
+            "en": "Flemish",
+            "nl": "Vlaams",
+            "de": "Flämisch"
+          }
+        },
+        {
+          "id": "en",
+          "label": {
+            "en": "English",
+            "nl": "Engels",
+            "de": "Englisch"
+          }
+        },
+        {
+          "id": "en-US",
+          "label": {
+            "en": "English US",
+            "nl": "Engels US",
+            "de": "Englisch US"
+          }
+        },
+        {
+          "id": "en-AU",
+          "label": {
+            "en": "English AU",
+            "nl": "Engels AU",
+            "de": "Englisch AU"
+          }
+        },
+        {
+          "id": "de",
+          "label": {
+            "en": "German",
+            "nl": "Duits",
+            "de": "Deutsch"
+          }
+        },
+        {
+          "id": "cs",
+          "label": {
+            "en": "Czech",
+            "nl": "Tsjechisch",
+            "de": "Tschechisch"
+          }
+        },
+        {
+          "id": "da",
+          "label": {
+            "en": "Danish",
+            "nl": "Deens",
+            "de": "Dänisch"
+          }
+        },
+        {
+          "id": "es",
+          "label": {
+            "en": "Spanish",
+            "nl": "Spaans",
+            "de": "Spanisch"
+          }
+        },
+        {
+          "id": "fr",
+          "label": {
+            "en": "French",
+            "nl": "Frans",
+            "de": "Französisch"
+          }
+        },
+        {
+          "id": "it",
+          "label": {
+            "en": "Italian",
+            "nl": "Italiaans",
+            "de": "Italienisch"
+          }
+        },
+        {
+          "id": "hu",
+          "label": {
+            "en": "Hungarian",
+            "nl": "Hongaars",
+            "de": "Ungarisch"
+          }
+        },
+        {
+          "id": "pl",
+          "label": {
+            "en": "Polish",
+            "nl": "Pools",
+            "de": "Polieren"
+          }
+        },
+        {
+          "id": "pt",
+          "label": {
+            "en": "Portuguese",
+            "nl": "Portugees",
+            "de": "Portugiesisch"
+          }
+        },
+        {
+          "id": "fi",
+          "label": {
+            "en": "Finnish",
+            "nl": "Fins",
+            "de": "Finnisch"
+          }
+        },
+        {
+          "id": "sv",
+          "label": {
+            "en": "Swedish",
+            "nl": "Zweeds",
+            "de": "Schwedisch"
+          }
+        },
+        {
+          "id": "nb",
+          "label": {
+            "en": "Norwegian",
+            "nl": "Noors",
+            "de": "Norwegisch"
+          }
+        },
+        {
+          "id": "tr",
+          "label": {
+            "en": "Turkish",
+            "nl": "Turks",
+            "de": "Türkisch"
+          }
+        },
+        {
+          "id": "el",
+          "label": {
+            "en": "Greek",
+            "nl": "Grieks",
+            "de": "Griechisch"
+          }
+        },
+        {
+          "id": "ru",
+          "label": {
+            "en": "Russian",
+            "nl": "Russisch",
+            "de": "Russisch"
+          }
+        },
+        {
+          "id": "zh",
+          "label": {
+            "en": "Chinese",
+            "nl": "Chinees",
+            "de": "Chinesisch"
+          }
+        },
+        {
+          "id": "ja",
+          "label": {
+            "en": "Japanese",
+            "nl": "Japans",
+            "de": "Japanisch"
+          }
+        },
+        {
+          "id": "id",
+          "label": {
+            "en": "Indonesian",
+            "nl": "Indonesisch",
+            "de": "Indonesisch"
+          }
+        }
+      ]
+    },
+    {
+      "name": "speed",
+      "type": "checkbox",
+      "title": {
+        "en": "Slow speech speed",
+        "nl": "Langzame spraaksnelheid",
+        "de": "Langsame Sprechgeschwindigkeit"
+      }
+    },
+    {
+      "name": "volume",
+      "type": "range",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "%",
+      "title": {"en": "Volume", "nl": "Volume", "de": "Lautstärke"},
+      "labelMultiplier": 1,
+      "labelDecimals": 0
+    },
+    {
+      "name": "text",
+      "type": "text",
+      "placeholder": {
+        "en": "Text",
+        "nl": "Tekst",
+        "de": "Text"
+      }
+    },
+    {
+      "name": "muted",
+      "type": "checkbox",
+      "title": {
+        "en": "Send to muted device too",
+        "nl": "Ook verzenden naar gedempt apparaat",
+        "de": "Auch an stummgeschaltetes Gerät senden"
+      }
+    }
+  ]
+}
