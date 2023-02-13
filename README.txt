@@ -1,8 +1,1 @@
-Let Homey broadcast a text message to your Google Home devices.
-
-Currently supports:
-- Google Cast Devices
-
-Limitations
-- Messages that contain over 200 characters are not supported by Google
-- Only one message is played when sending multiple messages to the same device, create a timeout to play your next message
+This app will cast a given text of maximal 200 characters to a Google cast device or broadcast the text to all devices. A high number of languages are supported. The action flow allows you to not cast to muted devices or to a group of cast devices like a Nest Mini stereo pair.

@@ -1,0 +1,40 @@
+{
+  "id": "com.google.tts",
+  "name": {
+    "en": "Cast a text to Google"
+  },
+  "brandColor": "#f5a623",
+  "version": "1.4.3",
+  "compatibility": ">=6.0.0",
+  "sdk": 3,
+  "author": {
+    "name": "Dennie de Groot",
+    "email": "mail@denniedegroot.nl"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Martin Verbeek",
+        "email": "dudz40@gmail.com"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "denniedegroot"
+      }
+    }
+  },
+  "description": {
+    "en": "Have Google devices speak your text in your language",
+    "nl": "Laat Google apparaten jouw text spreken in jouw taal",
+    "de": "Lassen Sie Google-Geräte Ihren Text in Ihrer Sprache sprechen"
+  },
+  "images": {
+    "large": "./assets/images/large.png",
+    "small": "./assets/images/small.png",
+    "xlarge": "./assets/images/xlarge.png"
+  },
+  "category": "tools"
+}
