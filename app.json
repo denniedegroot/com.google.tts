@@ -253,6 +253,14 @@
                 }
               },
               {
+                "id": "ko",
+                "label": {
+                  "en": "Korean",
+                  "nl": "Koreaans",
+                  "de": "Koreanisch"
+                }
+              },
+              {
                 "id": "id",
                 "label": {
                   "en": "Indonesian",
