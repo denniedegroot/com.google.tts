@@ -2,5 +2,10 @@
   "dependencies": {
     "castv2-client": "^1.2.0",
     "google-tts-api": "^2.0.2"
+  },
+  "overrides": {
+    "protobufjs": "^7.5.4",
+    "axios": "^1.13.2",
+    "follow-redirects": "^1.16.0"
   }
 }

@@ -30,7 +30,7 @@ class googleTTS extends Homey.App {
             if (this.foundDevices[device_data].name == device.name || (this.foundDevices[device_data].id != undefined && this.foundDevices[device_data].id == device.id))
                 return { ip: this.foundDevices[device_data].host, port:this.foundDevices[device_data].port };
 
-        return "0.0.0.0";
+        return { ip: "0.0.0.0", port: undefined };
     }
 
     async goWithTheFlow() {
@@ -66,12 +66,26 @@ class googleTTS extends Homey.App {
         })
         .registerArgumentAutocompleteListener('device', (query, args) => {
             const devices = []
-            for (const device_data in this.foundDevices)
-                if (this.foundDevices[device_data].name.toLowerCase().indexOf(query.toLowerCase()) > -1 || this.foundDevices[device_data].description.toLowerCase().indexOf(query.toLowerCase()) > -1)
+            for (const device_data in this.foundDevices) {
+                const name = this.foundDevices[device_data].name || '';
+                const description = this.foundDevices[device_data].description || '';
+                if (name.toLowerCase().indexOf(query.toLowerCase()) > -1 || description.toLowerCase().indexOf(query.toLowerCase()) > -1)
                     devices.push(this.foundDevices[device_data]);
+            }
 
             return Promise.resolve(devices);
         })
+    }
+
+    addDiscoveryResult(discoveryResult) {
+        this.log('discoverDevices : ', discoveryResult.txt.fn, 'on', discoveryResult.address, discoveryResult.port);
+        const db = {};
+        db.id = discoveryResult.id;
+        db.host = discoveryResult.address;
+        db.port = discoveryResult.port;
+        db.name = discoveryResult.txt.fn || discoveryResult.id;
+        db.description = discoveryResult.txt.md || '';
+        this.foundDevices[discoveryResult.id] = db;
     }
 
     async discoverDevices() {
@@ -79,18 +93,13 @@ class googleTTS extends Homey.App {
 
         const discoveryStrategy = this.homey.discovery.getStrategy('googlecast');
 
-        discoveryStrategy.on('result', discoveryResult => {
-            this.log('discoverDevices : ', discoveryResult.txt.fn, 'on', discoveryResult.address, discoveryResult.port);
-            const db = {};
-            db.id = discoveryResult.id;
-            db.host = discoveryResult.address;
-            db.port = discoveryResult.port;
-            db.name = discoveryResult.txt.fn;
-            db.description = discoveryResult.txt.md;
-            this.foundDevices[discoveryResult.id] = db;
-        });
+        discoveryStrategy.on('result', discoveryResult => this.addDiscoveryResult(discoveryResult));
 
-        discoveryStrategy.getDiscoveryResults();
+        // getDiscoveryResults() returns already known results synchronously,
+        // these need to be processed too since the 'result' event only fires
+        // for devices discovered after this listener was registered.
+        const discoveryResults = discoveryStrategy.getDiscoveryResults();
+        for (const id in discoveryResults) this.addDiscoveryResult(discoveryResults[id]);
     }
 }
 
