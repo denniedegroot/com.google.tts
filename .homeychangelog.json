@@ -1,5 +1,8 @@
 {
   "2.0.0": {
     "en": "SDKv3 Migration"
+  },
+  "2.1.0": {
+    "en": "Add Korean language support"
   }
 }
